@@ -14,26 +14,21 @@ def nextto (ch1,ch2,array):
   for i in range(0,len(array)):
             for j in range(0,len(array[i])):
                 if array[i][j]==ch1:
-                  try:
+                  if i>0:
                     if array[i-1][j]==ch2:
                         return True
-                  except:
-                    pass
-                  try:
+
+		  if i<2:
                     if array[i+1][j]==ch2:
                         return True
-                  except: 
-                    pass
-                  try:
+
+                  if j<2:
                     if array[i][j+1]==ch2:
                         return True
-                  except:
-                    pass
-                  try:
+                  if j>0:
                     if array[i][j-1]==ch2:
                         return True
-                  except:
-                    pass
+
   return False
 
 
@@ -62,8 +57,8 @@ def above (ch1,ch2,array):
                 for m in range(0,i):
                     
                     for k in range(0,len(array[m])):
-                       
-                        if array[k][m]==ch2:
+                        
+                        if array[m][k]==ch2:
                             return True
               except:
                 raise
@@ -77,7 +72,7 @@ def check(matrix):
             if not( (not(left ("D","E",matrix))) or (not(nextto("D","C",matrix))) or (not(sees("A","E",matrix)))):
                 if not (not(sees("E","D",matrix) or sees("F","E",matrix)) or  not(above("E","B",matrix) == nextto("B","C",matrix))):
                     return True
-    return False      
+      return False      
 
 def generate():
     a = list(itertools.permutations("ABCDEF   ", 9))
